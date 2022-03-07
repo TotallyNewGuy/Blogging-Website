@@ -20,6 +20,7 @@
       <module name="consul_server" target="8" />
       <module name="microservice_blog" target="8" />
       <module name="resilience4j_server" target="8" />
+      <module name="zipkin_server" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -35,6 +36,7 @@
       <module name="provider_server" options="-parameters" />
       <module name="resilience4j_server" options="-parameters" />
       <module name="user_server" options="-parameters" />
+      <module name="zipkin_server" options="-parameters" />
     </option>
   </component>
 </project>

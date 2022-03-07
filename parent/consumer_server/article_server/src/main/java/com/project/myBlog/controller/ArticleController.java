@@ -1,5 +1,7 @@
 package com.project.myBlog.controller;
 
+import com.project.myBlog.cache.Cache;
+import com.project.myBlog.aop.LogAnnotation;
 import com.project.myBlog.service.ArticleService;
 import com.project.myBlog.vo.Result;
 import com.project.myBlog.vo.params.ArticleParam;
@@ -20,6 +22,7 @@ public class ArticleController {
     private ArticleService articleService;
 
     @PostMapping()
+    @LogAnnotation(module = "article_server", operation = "get all articles per page")
     public Result getArticles(@RequestBody PageParams pageParams) {
         Result r = articleService.getArticles(pageParams);
         System.out.println(r.getData().toString());
@@ -28,6 +31,7 @@ public class ArticleController {
 
     // top 5 hot articles
     @PostMapping("hot")
+    @Cache(expire = 5 * 60 * 1000,name = "hot_article")
     public Result getHotArticles() {
         return articleService.getHotArticles(LIMIT);
     }
