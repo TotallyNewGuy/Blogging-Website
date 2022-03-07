@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+#      uri: http://localhost:6000
+      name: category
+      profile: dev
+      label: main
+      discovery:
+        enabled: true
+        service-id: config-serive
+      fail-fast: true

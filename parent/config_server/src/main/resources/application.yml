@@ -1,0 +1,36 @@
+server:
+  port: 6000
+spring:
+  application:
+    name: config-serive
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/TotallyNewGuy/microservice-config.git
+
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        register: true
+        instance-id: ${spring.application.name}:${server.port}
+        service-name: ${spring.application.name}
+        port: ${server.port}
+        prefer-ip-address: true
+        ip-address: ${spring.cloud.client.ip-address}
+
+        # check availability
+        heartbeat:
+          enabled: true
+        health-check-interval: 10s
+        health-check-critical-timeout: 10s
+  # spring cloud bus config update
+  rabbitmq:
+    host: localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: busrefresh
