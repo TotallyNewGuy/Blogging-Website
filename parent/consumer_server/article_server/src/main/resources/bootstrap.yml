@@ -9,11 +9,3 @@ spring:
         enabled: true
         service-id: config-serive
       fail-fast: true
-  zipkin:
-    base-url: http://127.0.0.1:9411/
-    sender:
-      type: web
-
-  sleuth:
-    sampler:
-      probability: 1
